@@ -6,6 +6,7 @@ ClickHouse is a very fast, Open Source, columnar database.
 
 The script uses a simple table in the my2 schema to collect data.
 ch2coll collects from system.metrics, system.asynchronous_metrics, and system.events:
+```SQL
 insert into my2.status
 select now() timestamp, metric, value
   from system.metrics
@@ -15,5 +16,6 @@ select now(), metric, cast(value, 'Int64')
 union all
 select now(), event, cast(value, 'Int64')
   from system.events;
+```
   
 Collecting data allows usage analysis and visualization...
