@@ -11,7 +11,7 @@ use my2;
 CREATE TABLE IF NOT EXISTS my2.status (timestamp DateTime,  metric String,  value Int64)
  ENGINE = MergeTree
  PARTITION BY toYYYYMM(timestamp)
- ORDER BY (timestamp, metric)
+ ORDER BY (metric, timestamp)
  SETTINGS index_granularity = 8192;
 
 -- Collect data
